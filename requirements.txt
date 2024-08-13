@@ -1,0 +1,8 @@
+datetime
+dateutil
+fontawesome
+json
+os
+python-dotenv
+pytz
+requests
