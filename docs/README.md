@@ -61,12 +61,11 @@ Generate the new icon list by executing the followoing:
 
 ```bash
 cd /usr/lib/python3.12/site-packages/fontawesome/
-python3 ./generate.py --revision 6.6.0 > icons.py 
+python3 ./generate.py --revision 6.6.0 > icons.py
 ```
 
-Sometimes the generated file is generated with errors, for those cases you can find the `icons.py` file [here](utils/icons.py).
+Sometimes the generated file is generated with errors, for those cases you can find the `icons.py` file [here](../utils/icons.py).
 Please, backup the original `icons.py` file and copy the provided one to the same directory.
-
 
 ## Installation
 
@@ -144,7 +143,7 @@ done
 
 ### Update the configuration file
 
-Open the `i3wm` configuration file (i.e:  `$HOME/.i3/config`) and replace the line
+Open the `i3wm` configuration file (i.e: `$HOME/.i3/config`) and replace the line
 
 ```bash
  status_command i3status
