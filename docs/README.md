@@ -23,7 +23,7 @@ GNU/Linux distribution with `i3wm` installed.
 
 ## Dependencies
 
-See the [Requirements file](requirements.txt)
+See the [Requirements file](../requirements.txt)
 
 ## Fontawesome upgrade
 
@@ -57,7 +57,7 @@ python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/generate.py
 python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/icons.py
 ```
 
-Generate the new icon list by executing the followoing:
+Generate the new icon list by executing the following:
 
 ```bash
 cd /usr/lib/python3.12/site-packages/fontawesome/
