@@ -1,9 +1,72 @@
 # nightscout-i3
 
+- [nightscout-i3](#nightscout-i3)
+  - [Overview](#overview)
+  - [Dependencies](#dependencies)
+  - [Fontawesome upgrade](#fontawesome-upgrade)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [i3 Configuration](#i3-configuration)
+    - [Create a `status.sh` script](#create-a-statussh-script)
+    - [Update the configuration file](#update-the-configuration-file)
+  - [References](#references)
+  - [TODO](#todo)
+  - [License](#license)
+
+## Overview
+
 This project retrieves data from [Nightscout](https://nightscout.github.io/) and updates the [i3 status bar](https://i3wm.org/docs/i3status.html) on any
 GNU/Linux distribution with `i3wm` installed.
 
 ![status bar](images/status_bar.png)
+
+## Dependencies
+
+See the [Requirements file](requirements.txt)
+
+## Fontawesome upgrade
+
+The project `nightscout-i3` uses the library [Fontawesome Python](https://github.com/justbuchanan/fontawesome-python)
+which is now abandoned.
+If you want to get the latest Fontawesome icons you must generate the list again.
+Find where the package was installed:
+
+```bash
+$ pacman -Ql python-fontawesome
+
+python-fontawesome /usr/
+python-fontawesome /usr/lib/
+python-fontawesome /usr/lib/python3.12/
+python-fontawesome /usr/lib/python3.12/site-packages/
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome-5.10.1.post1-py3.12.egg-info/
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome-5.10.1.post1-py3.12.egg-info/PKG-INFO
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome-5.10.1.post1-py3.12.egg-info/SOURCES.txt
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome-5.10.1.post1-py3.12.egg-info/dependency_links.txt
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome-5.10.1.post1-py3.12.egg-info/top_level.txt
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/__init__.py
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/__pycache__/
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/__pycache__/__init__.cpython-312.opt-1.pyc
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/__pycache__/__init__.cpython-312.pyc
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/__pycache__/generate.cpython-312.opt-1.pyc
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/__pycache__/generate.cpython-312.pyc
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/__pycache__/icons.cpython-312.opt-1.pyc
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/__pycache__/icons.cpython-312.pyc
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/generate.py
+python-fontawesome /usr/lib/python3.12/site-packages/fontawesome/icons.py
+```
+
+Generate the new icon list by executing the followoing:
+
+```bash
+cd /usr/lib/python3.12/site-packages/fontawesome/
+python3 ./generate.py --revision 6.6.0 > icons.py 
+```
+
+Sometimes the generated file is generated with errors, for those cases you can find the `icons.py` file [here](utils/icons.py).
+Please, backup the original `icons.py` file and copy the provided one to the same directory.
+
 
 ## Installation
 
@@ -49,6 +112,12 @@ Add your values to the following variables in the `.env` file:
   make run
 ```
 
+or
+
+```bash
+ NIGTHSCOUT_HOST="<heroky|fly.dev|... host>" NIGTHSCOUT_API_TOKEN="some-api-token" TIMEZONE="America/Montevideo" python3 src/main.py
+```
+
 ## Run tests
 
 Execute the following
@@ -73,9 +142,9 @@ i3status | while :; do
 done
 ```
 
-### Update the `$HOME/.i3/config` file
+### Update the configuration file
 
-Replace the line
+Open the `i3wm` configuration file (i.e:  `$HOME/.i3/config`) and replace the line
 
 ```bash
  status_command i3status
@@ -91,6 +160,7 @@ with the following:
 
 - [Nightscout site](https://nightscout.github.io/)
 - [i3wm site](https://i3wm.org/)
+- [Fontawesome Python](https://github.com/justbuchanan/fontawesome-python)
 
 ## TODO
 
