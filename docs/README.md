@@ -2,7 +2,6 @@
 
 This project retrieves data from [Nightscout](https://nightscout.github.io/) and updates the [i3 status bar](https://i3wm.org/docs/i3status.html) on any
 GNU/Linux distribution with `i3wm` installed.
-〰️
 
 ## Installation
 
@@ -36,16 +35,24 @@ Add your values to the following variables in the `.env` file:
 - `NIGHTSCOUT_API_TOKEN`
 - `TIMEZONE`
 
-4. Install dependencies:
+4. Install
 
 ```bash
-  pip install -r requirements.txt
+  make install
 ```
 
 ## Usage
 
 ```bash
-  python src/nightscout/main.py
+  make run
+```
+
+## Run tests
+
+Execute the following
+
+```bash
+make test
 ```
 
 ## i3 Configuration
@@ -66,7 +73,7 @@ done
 
 ### Update the `$HOME/.i3/config` file
 
-Update the line
+Replace the line
 
 ```bash
  status_command i3status
@@ -82,6 +89,12 @@ with the following:
 
 - [Nightscout site](https://nightscout.github.io/)
 - [i3wm site](https://i3wm.org/)
+
+## TODO
+
+- Update tests
+- Add a chart with last N hours
+- Show values with colors (in-range, low, high)
 
 ## License
 
