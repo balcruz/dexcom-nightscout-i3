@@ -3,6 +3,8 @@
 This project retrieves data from [Nightscout](https://nightscout.github.io/) and updates the [i3 status bar](https://i3wm.org/docs/i3status.html) on any
 GNU/Linux distribution with `i3wm` installed.
 
+![status bar](images/status_bar.png)
+
 ## Installation
 
 1. Clone the repository:
@@ -93,6 +95,7 @@ with the following:
 ## TODO
 
 - Update tests
+- Change arrows (possibly using another library)
 - Add a chart with last N hours
 - Show values with colors (in-range, low, high)
 
